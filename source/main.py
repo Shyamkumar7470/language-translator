@@ -11,6 +11,9 @@ isTranslateOn = False
 translator = Translator() # Initialize the translator module.
 pygame.mixer.init()  # Initialize the mixer module.
 
+#Language detection is handled using the detect method from the googletrans library, 
+#   which predicts the language of the input text based on its content.
+
 # Create a mapping between language names and language codes
 language_mapping = {name: code for code, name in LANGUAGES.items()}
 
@@ -19,6 +22,9 @@ def get_language_code(language_name):
 
 def translator_function(spoken_text, from_language, to_language):
     return translator.translate(spoken_text, src='{}'.format(from_language), dest='{}'.format(to_language))
+
+#Performance can be evaluated using metrics like BLEU score (for comparing the quality of machine-generated 
+#  translations to human translations), user feedback, and benchmark tests against standard datasets.
 
 def text_to_voice(text_data, to_language):
     myobj = gTTS(text=text_data, lang='{}'.format(to_language), slow=False)
